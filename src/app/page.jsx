@@ -240,6 +240,7 @@ export default function Home() {
     },
   ]);
 
+  
   const handleChange = (event) => {
     const filteredData = data.filter((singleData) => {
       return singleData.name
@@ -265,16 +266,26 @@ export default function Home() {
   const getData = async () => {
     try {
         const response = await getDocs(collection(database, "userData"));
-        console.log(response)
+
         response.forEach((doc) => {
-            console.log(doc.data() );
+            // console.log(doc.data() );
+            setDataFromDb((currentData) => {
+                return [
+                    ...currentData,
+                    {
+                       id: doc.id,
+                       user: doc.data()
+                    }
+                ]
+            })
+    
           });
     } catch (error) {
         console.log(error)
     }
-    
-    
   };
+  const [dataFromDb, setDataFromDb] = useState([])
+  console.log(dataFromDb, "data from db")
 
   return (
     <main>
@@ -292,6 +303,16 @@ export default function Home() {
       <Login />
       <button onClick={sendData}>Send data</button>
       <button onClick={getData}>Get data</button>
+      <div>
+        <h1>Data from db</h1>
+        {dataFromDb.map((item) => {
+            return <div key={item.id}>
+                <p>{item.user.first}</p>
+                <p>{item.user.last}</p>
+                <p>{item.user.born}</p>
+            </div>
+        })}
+      </div>
     </main>
   );
 }
