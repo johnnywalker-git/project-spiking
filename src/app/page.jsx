@@ -3,10 +3,21 @@ import Login from "@/components/Login";
 import { useState } from "react";
 import { collection, addDoc, getDocs } from "firebase/firestore";
 import { database } from "@/firebase/config";
+import Quagga from 'quagga';
+import Scanner from "@/components/Scanner";
+
 
 //THIS IS OUR HOME PAGE
 
 export default function Home() {
+
+  const [camera, setCamera] = useState(false);
+  const [result, setResult] = useState(null);
+
+  const onDetected = result => {
+    setResult(result);
+  };
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -290,6 +301,15 @@ export default function Home() {
   return (
     <main>
       <h1>Welcome to our Site</h1>
+       <div className="App">
+      <p>{result ? result : "Scanning..."}</p>
+      <button onClick={() => setCamera(!camera)}>
+        {camera ? "Stop" : "Start"}
+      </button>
+      <div className="container">
+        {camera && <Scanner onDetected={onDetected} />}
+      </div>
+    </div>
       <input type="text" onChange={handleChange} />
       {data.map((singleData) => {
         return (
