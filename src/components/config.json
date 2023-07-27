@@ -12,7 +12,7 @@
       "patchSize": "medium",
       "halfSample": true
     },
-    "numOfWorkers": 2,
+    "numOfWorkers": 0,
     "frequency": 10,
     "decoder": {
       "readers": ["ean_reader"]
