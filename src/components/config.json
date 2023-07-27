@@ -12,7 +12,7 @@
       "patchSize": "small",
       "halfSample": true
     },
-    "numOfWorkers": 0,
+    "numOfWorkers": 2,
     "frequency": 2,
     "decoder": {
       "readers": [
