@@ -19,7 +19,7 @@ whAT WE DID YESTERDAY
 ## 27-07-2023
 
 DOING
-1 - auth - register a new user - name, email, password, confirmPassword 
+1 - auth - register a new user - name, email, password, confirmPassword  
 
 BLOCKER - 
 
@@ -31,4 +31,7 @@ TODO
 4 - Try to implement scanning system
 
 
+//Can we have a dream team collection with all the users?
+
+form to add users
 
